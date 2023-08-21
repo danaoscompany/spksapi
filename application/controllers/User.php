@@ -12,4 +12,9 @@ class User extends CI_Controller {
       $details = $this->db->query("SELECT * FROM `details` WHERE `cow_id`=".$cowID)->result_array();
       echo json_encode($details);
     }
+    
+  public function get_all_details() {
+        $details = $this->db->query("SELECT * FROM `details`")->result_array();
+        echo json_encode($details);
+      }
 }
