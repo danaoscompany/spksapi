@@ -4,6 +4,9 @@ class User extends CI_Controller {
   
   public function get_cows() {
     $cows = $this->db->query("SELECT * FROM `cows` ORDER BY `name`")->result_array();
+    for ($i=0; $i<sizeof($cows); $i++) {
+      $cows[$i]['details'] = $this->db->query("SELECT * FROM `details` WHERE `cow_id`=".$cows[$i]['id'])->result_array();
+    }
     echo json_encode($cows);
   }
   
@@ -45,5 +48,9 @@ class User extends CI_Controller {
     } else {
       echo json_encode($this->upload->display_errors());
     }
+  }
+  
+  public function get_cows() {
+    
   }
 }
