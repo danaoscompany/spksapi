@@ -42,6 +42,8 @@ class User extends CI_Controller {
           'detail' => $detail
         ));
       }
+    } else {
+      echo json_encode($this->upload->display_errors());
     }
   }
 }
